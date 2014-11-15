@@ -1,0 +1,25 @@
+Touch your two factor authentication device to complete authentication.
+
+<script>
+
+  u2f.sign([<%= raw authentication_request.serialized %>], function (result) {
+    console.log(result);
+    // if keyHandle is wrong, it fails with:
+    // {errorCode: 1, errorMessage: "device status code: 2"}
+    if (result.errorCode) {
+      document.getElementsByClassName('fidologin-status')[0]
+              .innerHTML = "Failed. Error code: " + result.errorCode;
+      return;
+    }
+    var form = document.getElementById('fido-login-authentication');
+    form.elements.keyHandle.value = result.keyHandle;
+    form.elements.signatureData.value = result.signatureData;
+    form.elements.clientData.value = result.clientData;
+    form.submit();
+  });
+</script>
+<%= form_tag(fido_login_authentication_path, method: :post, id: 'fido-login-authentication') do %>
+  <%= hidden_field_tag :keyHandle %>
+  <%= hidden_field_tag :signatureData %>
+  <%= hidden_field_tag :clientData %>
+<% end %>

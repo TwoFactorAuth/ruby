@@ -1,4 +1,4 @@
-class CreateFidoLoginRegistration < ActiveRecord::Migration
+class CreateFidoLoginRegistrations < ActiveRecord::Migration
   def change
     create_table :fido_login_registrations do |t|
       t.references :login, polymorphic: true, null: false, index: true
@@ -9,7 +9,7 @@ class CreateFidoLoginRegistration < ActiveRecord::Migration
       t.timestamp :last_authenticated_at, null: false
       t.timestamps
     end
-    add_index :registrations, :key_handle
-    add_index :registrations, :last_authenticated_at
+    add_index :fido_login_registrations, :key_handle
+    add_index :fido_login_registrations, :last_authenticated_at
   end
 end

@@ -1,0 +1,38 @@
+
+<% if @verifier and @verifier.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@verifier.errors.count, "error") %> prohibited this registration from being saved:</h2>
+ 
+    <ul>
+    <% @verifier.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<p>
+  Touch your two factor authentication device to complete registration.
+</p>
+
+<script>
+console.log("starting", <%= raw registration_request.serialized %>);
+  u2f.register([<%= raw registration_request.serialized %>], [], function (result) {
+    console.log("callback", result);
+    if (result.errorCode) {
+      document.getElementsByClassName('fidologin-status')[0]
+              .innerHTML = "Failed. Error code: " + result.errorCode;
+      return;
+    }
+    var form = document.getElementById('fido-login-registration');
+    form.elements.clientData.value = result.clientData;
+    form.elements.registrationData.value = result.registrationData;
+    form.elements.challenge.value = result.challenge;
+    form.submit();
+  });
+</script>
+<%= form_tag(fido_login_registration_path, method: :post, id: 'fido-login-registration') do %>
+  <%= hidden_field_tag :clientData %>
+  <%= hidden_field_tag :registrationData %>
+  <%= hidden_field_tag :challenge %>
+<% end %>
