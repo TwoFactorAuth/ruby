@@ -1,0 +1,36 @@
+x make RegistrationRequest to user
+x verify Registration
+x record Registration
+x RegistrationResponseVerifier: check certificate issuer?
+x test RegistrationsController
+x test RegistrationsHelper
+x make AuthenticationRequest
+x verify AuthenticationResponse
+x test AuthenticationRequest
+x test AuthenticationResponse
+x test AuthenticationResponseVerifier
+x test AuthenticationsHelper
+x test AuthenticationsController
+x use unpack('n') in place of that << 8
+x counter - unsigned? what size?
+  package as Engine
+  rake task to create migration
+  package as gem
+  authentications/new - catch error code 4, give 'wrong device' error
+  fix auth redirect loop on signout
+  make Devise hook optional
+  generate app id from config/request
+  error if app id is localhost
+  error if http app_id has trailing slash
+  readme, license
+  set up on github
+  domain name
+  demo video
+
+  Authentication: handle multiple devices
+  generalize Devise interaction from 'User'
+  send user's existing key handles down in registration request
+  extract prompts and error messages to locale file
+  Registration/AuthenticationHelpers should not be doing db queries
+  Authentication: handle counter wraparound
+  RegistrationClientData: what is cid_pubkey for?
