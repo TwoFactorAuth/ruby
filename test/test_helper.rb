@@ -7,6 +7,7 @@ require 'devise'
 Rails.backtrace_cleaner.remove_silencers!
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+require_relative 'dummy/app/models/user'
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
@@ -39,5 +40,4 @@ class ActionController::TestCase
   end
 
   attr_reader :controller
-
 end
