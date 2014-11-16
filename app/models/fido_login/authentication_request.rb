@@ -1,3 +1,5 @@
+require 'adamantium'
+
 module FidoLogin
   class AuthenticationRequest
     include Adamantium
@@ -21,7 +23,7 @@ module FidoLogin
         appId: app_id,
         keyHandle: FidoLogin.websafe_base64_encode(key_handle),
         challenge: challenge,
-        version: FidoLogin::VERSION,
+        version: U2F_VERSION,
       }.to_json
     end
   end

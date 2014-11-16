@@ -1,3 +1,6 @@
+require 'active_model'
+require 'virtus'
+
 module FidoLogin
   class RegistrationVerifier
     include ActiveModel::Validations

@@ -1,3 +1,5 @@
+require 'adamantium'
+
 module FidoLogin
   class RegistrationRequest
     include Adamantium
@@ -24,7 +26,8 @@ module FidoLogin
       {
         appId: app_id,
         challenge: challenge,
-        version: FidoLogin::VERSION,
+        version: FidoLogin::U2F_VERSION,
       }.to_json
     end
   end
+end

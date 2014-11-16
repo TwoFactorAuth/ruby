@@ -1,3 +1,6 @@
+require 'active_model'
+require 'virtus'
+
 # See Fido U2F "Raw Message Formats" documentation, section 4.3 "Registration
 # Response Message: Success"
 module FidoLogin
