@@ -31,7 +31,7 @@ console.log("starting", <%= raw registration_request.serialized %>);
     form.submit();
   });
 </script>
-<%= form_tag(registration_path, method: :post, id: 'fido-login-registration') do %>
+<%= form_tag(fido_login_registration_path, method: :post, id: 'fido-login-registration') do %>
   <%= hidden_field_tag :clientData %>
   <%= hidden_field_tag :registrationData %>
   <%= hidden_field_tag :challenge %>
