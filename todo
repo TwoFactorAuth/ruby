@@ -14,8 +14,8 @@ x test AuthenticationsController
 x use unpack('n') in place of that << 8
 x counter - unsigned? what size?
 x package as Engine
-  rake task to create migration
-  package as gem
+x rake task to create migration
+x package as gem
   authentications/new - catch error code 4, give 'wrong device' error
   fix auth redirect loop on signout
   make Devise hook optional

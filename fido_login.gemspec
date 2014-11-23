@@ -22,5 +22,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rails', '~> 4.0', '<= 4.2'
   s.add_development_dependency "devise", '~> 3.3', '< 4'
   s.add_development_dependency "minitest-rails", '~> 2.1'
+  s.add_development_dependency "pry", '~> 0.10'
   s.add_development_dependency "sqlite3", '~> 1.3', '< 2'
 end
