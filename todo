@@ -22,9 +22,12 @@ x package as gem
   generate app id from config/request
   error if app id is localhost
   error if http app_id has trailing slash
-  readme, license
+  readme
+x license file
   set up on github
   domain name
+  commercial license
+  contributor license agreement
   demo video
 
   Authentication: handle multiple devices
