@@ -1,9 +1,12 @@
 module FidoLogin
   class FidoLoginController < ApplicationController
+    include FidoLogin::ApplicationHelper
     include Devise::Controllers::Helpers
 
     protect_from_forgery with: :exception
     before_action :authenticate_user!
+
+    private
 
     def after_fido_login_registration_path_for(resource)
       signed_in_root_path(resource)

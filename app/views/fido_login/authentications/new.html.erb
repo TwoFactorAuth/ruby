@@ -8,7 +8,7 @@ Touch your two factor authentication device to complete authentication.
     // {errorCode: 1, errorMessage: "device status code: 2"}
     if (result.errorCode) {
       document.getElementsByClassName('fidologin-status')[0]
-              .innerHTML = "Failed. Error code: " + result.errorCode;
+              .innerHTML = "Unable to authenticate. Error code: " + result.errorCode;
       return;
     }
     var form = document.getElementById('fido-login-authentication');

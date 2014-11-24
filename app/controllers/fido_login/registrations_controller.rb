@@ -1,5 +1,5 @@
 module FidoLogin
-  class RegistrationsController < FidoLogin::FidoLoginController
+  class RegistrationsController < FidoLoginController
     skip_before_action :fido_login_registration
     skip_before_action :fido_login_authentication
 

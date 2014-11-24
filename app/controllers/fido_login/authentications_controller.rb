@@ -1,5 +1,5 @@
 module FidoLogin
-  class AuthenticationsController < ApplicationController
+  class AuthenticationsController < FidoLoginController
     skip_before_action :fido_login_authentication
 
     include FidoLogin::AuthenticationsHelper
@@ -24,7 +24,7 @@ module FidoLogin
         user_fido_authenticated! verifier.counter
         redirect_to after_sign_in_path_for(current_user)
       else
-        flash[:alert] = "Unable to authenticate - did you use the right device?"
+        flash[:alert] = "Unable to authenticate"
         render :new, status: 406
       end
     end
