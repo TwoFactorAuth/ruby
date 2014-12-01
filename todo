@@ -19,9 +19,8 @@ x package as gem
   authentications/new - catch error code 4, give 'wrong device' error
   fix auth redirect loop on signout
 x make Devise hook optional
-  generate app id from config/request
-  error if app id is localhost
-  error if http app_id has trailing slash
+x error if app id is localhost
+x error if http app_id has trailing slash
   serve trusted facet list; mime "application/fido.trusted-apps+json"
 x detailed errors only in dev/test mode
   readme
@@ -32,6 +31,7 @@ x license file
   contributor license agreement
   demo video
 
+  help page on website for creating localhost aliases
   Authentication: handle multiple devices
   generalize Devise interaction from 'User'
   send user's existing key handles down in registration request

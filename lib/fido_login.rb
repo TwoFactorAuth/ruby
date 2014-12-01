@@ -8,14 +8,43 @@ require 'active_model/validator'
 
 module FidoLogin
   U2F_VERSION = 'U2F_V2'
-  # include request.optional_port
-  # APP_ID = "#{request.protocol}#{request.host}/"
-  APP_ID = "http://local.fidologin.com:3000"
 
   class FidoLoginError < RuntimeError ; end
     class CantGenerateRandomNumbers < FidoLoginError ; end
     class InvalidPublicKey < FidoLoginError ; end
+    class FacetDomain < FidoLoginError ; end
 
+
+  def self.facet_domain= facet_domain
+    if facet_domain =~ /localhost/
+      raise InvalidFacetDomain, "Facet domain can't be localhost, edit /etc/hosts to make a custom hostname"
+    end
+    if facet_domain == "https://www.example.com"
+      raise InvalidFacetDomain, "You need to cusomize the facet_domain in config/initializers/fido_login.rb"
+    end
+
+    @facet_domain = facet_domain.sub(/\/$/, '')
+  end
+
+  def self.facet_domain
+    @facet_domain
+  end
+
+  def self.trusted_facet_list_url= url
+    @trusted_facet_list_url
+  end
+
+  def self.trusted_facet_list_url
+    @trusted_facet_list_url or "#{facet_domain}/fido_login/trusted_facets"
+  end
+
+  def self.facets= facets
+    @facets = facets
+  end
+
+  def self.facets
+    @facets or []
+  end
 
   def self.websafe_base64_encode str
     # PHP code removes trailing =s, don't know why

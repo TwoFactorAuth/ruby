@@ -1,22 +1,21 @@
-# Set app_domain to the domain name your server uses in production and in
-# development.
-
-
+# Set facet_domain to the domain name your users see in the URL bar
 if Rails.production?
-  FidoLogin.app_domain = "https://www.example.com"
+  FidoLogin.facet_domain = "https://www.example.com"
 
   # Optional: If you have in-depth knowledge of the U2F spec and wnat to
-  # generate your own Trusted Facet List, delete the production app_domain
-  # setting above and customize this: (you can still use app_domain in dev)
+  # generate your own Trusted Facet List, delete the production facet_domain
+  # setting above and customize this: (you can still use facet_domain in dev)
   # FidoLogin.trusted_facet_list_url = 'https://www.example.com/ExampleAppId'
+elsif Rails.staging?
+  FidoLogin.facet_domain = "https://staging.example.com"
 else
-  FidoLogin.app_domain = "http://local.dev:3000"
+  FidoLogin.facet_domain = "http://local.dev:3000"
 end
 
 # Optional: if you want your users to be able to authenticate against multiple
 # domains names or apps, they will *all* have to be served via https and
 # listed here.
-FidoLogin.app_domains = [
+FidoLogin.facets = [
   # 'https://www.example.com',
   # 'https://www.example.net',
   # 'https://blog.example.com',

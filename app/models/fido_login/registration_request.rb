@@ -6,7 +6,7 @@ module FidoLogin
 
     attr_reader :app_id, :key_handles
 
-    def initialize app_id=FidoLogin::APP_ID, key_handles=[], challenge=nil
+    def initialize app_id=FidoLogin.trusted_facet_list_url, key_handles=[], challenge=nil
       @app_id = app_id
       @key_handles = key_handles
       @challenge = challenge

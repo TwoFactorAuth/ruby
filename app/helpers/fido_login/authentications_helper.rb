@@ -2,7 +2,7 @@ module FidoLogin
   module AuthenticationsHelper
     def authentication_request
       @authentication_request ||= AuthenticationRequest.new(
-        FidoLogin::APP_ID,
+        FidoLogin.trusted_facet_list_url,
         Registration.key_handle_for_authentication(current_user),
         user_session['pending_authentication_request_challenge']
       )

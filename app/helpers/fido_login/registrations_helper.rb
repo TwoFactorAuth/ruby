@@ -2,7 +2,7 @@ module FidoLogin
   module RegistrationsHelper
     def registration_request
       @registration_request ||= RegistrationRequest.new(
-        FidoLogin::APP_ID,
+        FidoLogin.trusted_facet_list_url,
         [],
         user_session['pending_registration_request_challenge']
       )
