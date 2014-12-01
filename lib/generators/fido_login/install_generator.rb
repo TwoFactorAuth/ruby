@@ -20,8 +20,12 @@ module FidoLogin
         migration_template "migration.rb", "db/migrate/create_fido_login_registrations.rb"
       end
 
+      def copy_initializer
+        copy_file "initializer.rb", "config/initializers/fido_login.rb"
+      end
+
       def show_readme
-        readme "README" if behavior == :invoke
+        readme "README.md" if behavior == :invoke
       end
     end
   end

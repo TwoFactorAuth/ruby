@@ -22,7 +22,8 @@ x make Devise hook optional
   generate app id from config/request
   error if app id is localhost
   error if http app_id has trailing slash
-  detailed errors only in dev/test mode
+  serve trusted facet list; mime "application/fido.trusted-apps+json"
+x detailed errors only in dev/test mode
   readme
 x license file
   set up on github
