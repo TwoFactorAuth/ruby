@@ -12,11 +12,11 @@ module FidoLogin
   class FidoLoginError < RuntimeError ; end
     class CantGenerateRandomNumbers < FidoLoginError ; end
     class InvalidPublicKey < FidoLoginError ; end
-    class FacetDomain < FidoLoginError ; end
+    class InvalidFacetDomain < FidoLoginError ; end
 
 
   def self.facet_domain= facet_domain
-    if facet_domain =~ /localhost/
+    if facet_domain =~ /localhost(:\d+)?\/?$/
       raise InvalidFacetDomain, "Facet domain can't be localhost, edit /etc/hosts to make a custom hostname"
     end
     if facet_domain == "https://www.example.com"
@@ -31,7 +31,7 @@ module FidoLogin
   end
 
   def self.trusted_facet_list_url= url
-    @trusted_facet_list_url
+    @trusted_facet_list_url = url
   end
 
   def self.trusted_facet_list_url
@@ -43,7 +43,7 @@ module FidoLogin
   end
 
   def self.facets
-    @facets or []
+    @facets or [facet_domain]
   end
 
   def self.websafe_base64_encode str
@@ -65,7 +65,6 @@ module FidoLogin
   end
 
   def self.decode_pubkey raw
-    #ec = OpenSSL::PKey::EC.new('prime256v1')
     bn = OpenSSL::BN.new(raw, 2)
     group = OpenSSL::PKey::EC::Group.new('prime256v1')
     point = OpenSSL::PKey::EC::Point.new(group, bn)

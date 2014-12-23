@@ -32,6 +32,7 @@ x license file
   demo video
 
   help page on website for creating localhost aliases
+  move Fidologin.pubkey_valid into RegistrationResponse
   Authentication: handle multiple devices
   generalize Devise interaction from 'User'
   send user's existing key handles down in registration request

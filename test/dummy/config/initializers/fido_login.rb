@@ -14,9 +14,8 @@ end
 
 # Optional: if you want your users to be able to authenticate against multiple
 # domains names or apps, they will *all* have to be served via https and
-# listed here. Yes, 'www.example.com' and 'example.com' count as different.
+# listed here.
 FidoLogin.facets = [
-  # 'https://example.com',
   # 'https://www.example.com',
   # 'https://www.example.net',
   # 'https://blog.example.com',
