@@ -39,6 +39,18 @@ describe FidoLogin do
       }.must_raise(FidoLogin::InvalidFacetDomain)
     end
 
+    it "raises if you try to use something.dev" do
+      Proc.new {
+        FidoLogin.facet_domain = "http://local.dev:3000"
+      }.must_raise(FidoLogin::InvalidFacetDomain)
+      Proc.new {
+        FidoLogin.facet_domain = "http://local.dev:3000/"
+      }.must_raise(FidoLogin::InvalidFacetDomain)
+      Proc.new {
+        FidoLogin.facet_domain = "http://local.dev/"
+      }.must_raise(FidoLogin::InvalidFacetDomain)
+    end
+
     it "raises if you use the default from the initializer" do
       Proc.new {
         FidoLogin.facet_domain = "https://www.example.com"

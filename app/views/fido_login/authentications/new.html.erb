@@ -1,8 +1,9 @@
 Touch your two factor authentication device to complete authentication.
 
+<script src="chrome-extension://pfboblefjcgdjicmnffhdgionmgcdmne/u2f-api.js"></script>
 <script>
-
   u2f.sign([<%= raw authentication_request.serialized %>], function (result) {
+    //console.log(result);
     // if keyHandle is wrong, it fails with:
     // {errorCode: 1, errorMessage: "device status code: 2"}
     if (result.errorCode) {

@@ -19,6 +19,9 @@ module FidoLogin
     if facet_domain =~ /localhost(:\d+)?\/?$/
       raise InvalidFacetDomain, "Facet domain can't be localhost, edit /etc/hosts to make a custom hostname"
     end
+    if facet_domain =~ /\.dev(:\d+)?\/?$/
+      raise InvalidFacetDomain, "Facet domain needs a real TLD, not .dev. Edit /etc/hosts to make a custom hostname"
+    end
     if facet_domain == "https://www.example.com"
       raise InvalidFacetDomain, "You need to cusomize the facet_domain in config/initializers/fido_login.rb"
     end
