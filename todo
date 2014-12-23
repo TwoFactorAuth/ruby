@@ -16,7 +16,7 @@ x counter - unsigned? what size?
 x package as Engine
 x rake task to create migration
 x package as gem
-  authentications/new - catch error code 4, give 'wrong device' error
+x authentications/new - catch error code 4, give 'wrong device' error
   fix auth redirect loop on signout
 x make Devise hook optional
 x error if app id is localhost
@@ -25,6 +25,7 @@ x error if http app_id has trailing slash
 x detailed errors only in dev/test mode
   readme
 x license file
+  rename away from trademark confusion
   set up on github
   domain name
   commercial license

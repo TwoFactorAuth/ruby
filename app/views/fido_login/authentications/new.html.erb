@@ -3,12 +3,15 @@ Touch your two factor authentication device to complete authentication.
 <script>
 
   u2f.sign([<%= raw authentication_request.serialized %>], function (result) {
-    console.log(result);
     // if keyHandle is wrong, it fails with:
     // {errorCode: 1, errorMessage: "device status code: 2"}
     if (result.errorCode) {
-      document.getElementsByClassName('fidologin-status')[0]
-              .innerHTML = "Unable to authenticate. Error code: " + result.errorCode;
+      var errors = document.getElementsByClassName('fidologin-status')[0];
+      if (result.errorCode == 4) {
+        errors.innerHTML = "Unable to authenticate. You registered with a different device. Error code: " + result.errorCode;
+      } else {
+        errors.innerHTML = "Unable to authenticate. Error code: " + result.errorCode;
+      }
       return;
     }
     var form = document.getElementById('fido-login-authentication');
