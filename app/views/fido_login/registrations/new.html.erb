@@ -1,16 +1,3 @@
-
-<% if @verifier and @verifier.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@verifier.errors.count, "error") %> prohibited this registration from being saved:</h2>
- 
-    <ul>
-    <% @verifier.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <p>
   Touch your two factor authentication device to complete registration.
 </p>

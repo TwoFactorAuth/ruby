@@ -18,7 +18,7 @@ x rake task to create migration
 x package as gem
 x authentications/new - catch error code 4, give 'wrong device' error
   fix auth redirect loop on signout
-  remove error output from reg/new
+x remove error output from reg/new
 x make Devise hook optional
 x error if app id is localhost
 x error if http app_id has trailing slash

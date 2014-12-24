@@ -9,7 +9,7 @@ module FidoLogin
     end
 
     def create
-      @verifier = RegistrationVerifier.new({
+      verifier = RegistrationVerifier.new({
         login: current_user,
         request: registration_request,
         client_data: ClientData.new(encoded: params[:clientData], correct_typ: 'navigator.id.finishEnrollment'),
@@ -17,7 +17,7 @@ module FidoLogin
       })
       clear_pending_challenge
 
-      if @verifier.save
+      if verifier.save
         user_fido_authenticated! 0 # don't need to auth again after registration
         redirect_to after_fido_login_registrations_path_for(current_user)
       else
