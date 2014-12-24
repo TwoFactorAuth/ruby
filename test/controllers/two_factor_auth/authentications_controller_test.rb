@@ -16,7 +16,7 @@ module TwoFactorAuth
     let(:signatureData) { "AQAAABAwRgIhAPueB6u8s63myrtQBT7KNOR3c4CVoNPVAiEkSOB8WGzqAiEA5zYbDQopgsVUl3d3pC947pKFSSIJs00ouC3xn3m7Pxo" }
 
     before do
-      TwoFactorAuth.trusted_facet_list_url = "http://local.twofactorauth.com:3000"
+      TwoFactorAuth.trusted_facet_list_url = "http://local.fidologin.com:3000"
       register_as current_user, registration
     end
 

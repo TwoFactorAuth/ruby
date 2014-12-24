@@ -4,7 +4,7 @@ module TwoFactorAuth
   describe AuthenticationVerifier do
     #parallelize_me!
 
-    let(:app_id) { "http://local.twofactorauth.com:3000" }
+    let(:app_id) { "http://local.fidologin.com:3000" }
     let(:key_handle) { TwoFactorAuth.websafe_base64_decode "fNKqlc0cHr7CcAScmiwJF3qL5WP5YY9vSZR5i474rPWmg8qjTHIckZA_v2Xioj6RB6BNJqzxUVUwG6wfksKXtA" }
     let(:challenge) { "i6M5PrWJbrwwn_25MqHJzbWVdILVCBfg1nLIiVJ_zOs" }
     let(:request) { AuthenticationRequest.new(app_id, key_handle, challenge) }

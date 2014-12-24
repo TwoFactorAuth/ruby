@@ -29,8 +29,9 @@ x detailed errors only in dev/test mode
     ruby use
     gem dev setup
 x license file
-  rename away from trademark confusion
+x rename away from trademark confusion
   set up on github
+  set up on rubygems
   domain name
   commercial license
   contributor license agreement
@@ -49,3 +50,4 @@ x license file
   RegistrationClientData: what is cid_pubkey for?
   ActiveAdmin integration
   one time passwords for backup
+  replace 'fidologin' in test fixtures with 'two_factor_auth'

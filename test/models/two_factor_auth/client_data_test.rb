@@ -17,7 +17,7 @@ module TwoFactorAuth
       end
 
       it "extracts the origin" do
-        client_data.origin.must_equal "http://local.twofactorauth.com:3000"
+        client_data.origin.must_equal "http://local.fidologin.com:3000"
       end
     end
 
