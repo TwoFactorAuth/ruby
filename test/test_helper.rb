@@ -36,7 +36,7 @@ class ActionController::TestCase
   def authenticate_as user, registration
     sign_in user
     assert_equal registration.login, user
-    controller.user_session['fido_authenticated'] = Time.now
+    controller.user_session['two_factor_auth_authenticated'] = Time.now
   end
 
   attr_reader :controller

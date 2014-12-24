@@ -1,9 +1,11 @@
-FidoLogin is avilable under the Affero General Public License v3 or a
+TwoFactorAuth is avilable under the Affero General Public License v3 or a
 commercial license for those who do not want the obligations of the AGPLv3
 (note that section 13 will apply to the codebase you use this gem in).
 
-Visit https://www.fidologin.com/rails for a commericial license or read on
-for the AGPLv3 you may use immediately and without charge.
+https://www.twofactorauth.io/rails
+
+If you don't want to publish your app's code, visit the gem's homepage for a
+commercial license that includes support and, if you want, installation.
 
 If you would like to have a licensing flamewar, please contact me on Slashdot
 in 1998, as that is the only time and place I have had the interest in one.

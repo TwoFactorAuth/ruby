@@ -1,3 +1,3 @@
-FidoLogin::Engine.routes.draw do
-  fido_login_for :users
+TwoFactorAuth::Engine.routes.draw do
+  two_factor_auth_for :users
 end

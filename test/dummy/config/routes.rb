@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  fido_login_for :users
+  two_factor_auth_for :users
   root to: 'secrets#index'
 
-  #mount FidoLogin::Engine => "/fido_login"
+  #mount TwoFactorAuth::Engine => "/two_factor_auth"
 end

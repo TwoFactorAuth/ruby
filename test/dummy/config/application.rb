@@ -4,7 +4,7 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 require "devise"
-require "fido_login"
+require "two_factor_auth"
 
 module Dummy
   class Application < Rails::Application

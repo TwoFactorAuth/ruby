@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TwoFactorAuth</title>
+  <%= stylesheet_link_tag    "two_factor_auth/application", media: "all" %>
+  <%= javascript_include_tag "two_factor_auth/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<p class="notice"><%= notice %></p>
+<p class="alert twofactorauth-status"><%= alert %></p>
+<%= yield %>
+
+</body>
+</html>

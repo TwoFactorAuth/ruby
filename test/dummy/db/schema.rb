@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141104134543) do
 
-  create_table "fido_login_registrations", force: true do |t|
+  create_table "two_factor_auth_registrations", force: true do |t|
     t.integer  "login_id",                                                    null: false
     t.string   "login_type",                                                  null: false
     t.binary   "key_handle",            limit: 65,                            null: false
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 20141104134543) do
     t.datetime "updated_at"
   end
 
-  add_index "fido_login_registrations", ["key_handle"], name: "index_fido_login_registrations_on_key_handle"
-  add_index "fido_login_registrations", ["last_authenticated_at"], name: "index_fido_login_registrations_on_last_authenticated_at"
-  add_index "fido_login_registrations", ["login_id", "login_type"], name: "index_fido_login_registrations_on_login_id_and_login_type"
+  add_index "two_factor_auth_registrations", ["key_handle"], name: "index_two_factor_auth_registrations_on_key_handle"
+  add_index "two_factor_auth_registrations", ["last_authenticated_at"], name: "index_two_factor_auth_registrations_on_last_authenticated_at"
+  add_index "two_factor_auth_registrations", ["login_id", "login_type"], name: "index_two_factor_auth_registrations_on_login_id_and_login_type"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
