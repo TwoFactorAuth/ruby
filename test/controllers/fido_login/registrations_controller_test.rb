@@ -15,7 +15,7 @@ module FidoLogin
       it "has a form linking to create" do
         get :new
         assert_response :success
-        assert_select "form[action='/fido_login/registration']"
+        assert_select "form[action='/fido_login/registrations']"
       end
     end
 

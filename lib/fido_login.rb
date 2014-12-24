@@ -46,7 +46,11 @@ module FidoLogin
   end
 
   def self.facets
-    @facets or [facet_domain]
+    if @facets.nil? or @facets.empty?
+      [facet_domain]
+    else
+      @facets
+    end
   end
 
   def self.websafe_base64_encode str
@@ -142,8 +146,9 @@ module ActionDispatch::Routing
         warn "You included fido_login_for #{resource.inspect} in your routes but there is no model defined in your system"
       end
       namespace :fido_login do
-        resource(:registration, only: [:new, :create])
-        resource(:authentication, only: [:new, :create])
+        resources(:registrations,   only: [:new, :create])
+        resource(:authentication,   only: [:new, :create])
+        resources(:trusted_facets,  only: [:index])
       end
     end
   end

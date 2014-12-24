@@ -8,7 +8,7 @@ module FidoLogin
 
     private
 
-    def after_fido_login_registration_path_for(resource)
+    def after_fido_login_registrations_path_for(resource)
       signed_in_root_path(resource)
     end
 

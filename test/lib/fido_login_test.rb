@@ -85,6 +85,12 @@ describe FidoLogin do
       FidoLogin.facets.must_equal ["https://www.example.net"]
     end
 
+    it "is just the facet_domain if empty list" do
+      # this value is persisted across tests...
+      FidoLogin.facets = []
+      FidoLogin.facet_domain = "https://www.example.net"
+      FidoLogin.facets.must_equal ["https://www.example.net"]
+    end
   end
 
   describe ".websafe_base64u_encode" do

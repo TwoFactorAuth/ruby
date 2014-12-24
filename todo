@@ -22,7 +22,7 @@ x authentications/new - catch error code 4, give 'wrong device' error
 x make Devise hook optional
 x error if app id is localhost
 x error if http app_id has trailing slash
-  serve trusted facet list; mime "application/fido.trusted-apps+json"
+x serve trusted facet list; mime "application/fido.trusted-apps+json"
 x detailed errors only in dev/test mode
   readme
 x license file
@@ -33,6 +33,8 @@ x license file
   contributor license agreement
   demo video
 
+  enforce code style with rubocop
+  reporting
   help page on website for creating localhost aliases
   move Fidologin.pubkey_valid into RegistrationResponse
   Authentication: handle multiple devices
@@ -42,3 +44,5 @@ x license file
   Registration/AuthenticationHelpers should not be doing db queries
   Authentication: handle counter wraparound
   RegistrationClientData: what is cid_pubkey for?
+  ActiveAdmin integration
+  one time passwords for backup

@@ -19,7 +19,7 @@ module FidoLogin
 
       if @verifier.save
         user_fido_authenticated! 0 # don't need to auth again after registration
-        redirect_to after_fido_login_registration_path_for(current_user)
+        redirect_to after_fido_login_registrations_path_for(current_user)
       else
         flash[:alert] = "Unable to register"
         render :new, status: 406

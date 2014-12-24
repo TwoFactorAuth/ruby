@@ -8,7 +8,7 @@ module FidoLogin
 
     def fido_login_registration
       if user_signed_in? and !user_fido_registered?
-        redirect_to new_fido_login_registration_path
+        redirect_to new_fido_login_registrations_path
         return false
       end
       true
