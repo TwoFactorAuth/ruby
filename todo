@@ -25,6 +25,9 @@ x error if http app_id has trailing slash
 x serve trusted facet list; mime "application/fido.trusted-apps+json"
 x detailed errors only in dev/test mode
   readme
+    rails use
+    ruby use
+    gem dev setup
 x license file
   rename away from trademark confusion
   set up on github

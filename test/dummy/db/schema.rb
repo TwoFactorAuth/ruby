@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104134543) do
+ActiveRecord::Schema.define(version: 20141224135949) do
 
   create_table "two_factor_auth_registrations", force: true do |t|
-    t.integer  "login_id",                                                    null: false
-    t.string   "login_type",                                                  null: false
-    t.binary   "key_handle",            limit: 65,                            null: false
-    t.binary   "public_key",            limit: 10240,                         null: false
-    t.binary   "certificate",           limit: 1048576, default: "x'782727'", null: false
-    t.integer  "counter",               limit: 5,       default: 0,           null: false
-    t.datetime "last_authenticated_at",                                       null: false
+    t.integer  "login_id",                                              null: false
+    t.string   "login_type",                                            null: false
+    t.binary   "key_handle",            limit: 65,                      null: false
+    t.binary   "public_key",            limit: 10240,                   null: false
+    t.binary   "certificate",           limit: 1048576, default: "x''", null: false
+    t.integer  "counter",               limit: 5,       default: 0,     null: false
+    t.datetime "last_authenticated_at",                                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
