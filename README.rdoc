@@ -1,3 +1,0 @@
-= TwoFactorAuth
-
-This project rocks and uses APGL.

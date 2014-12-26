@@ -1,0 +1,6 @@
+==============================================================================
+TwoFactorAuth gem installed. To integrate with your site, follow the steps in
+the README on GitHub or by running:
+
+rake two_factor_auth:readme
+==============================================================================

@@ -24,19 +24,18 @@ x error if app id is localhost
 x error if http app_id has trailing slash
 x serve trusted facet list; mime "application/fido.trusted-apps+json"
 x detailed errors only in dev/test mode
-  readme
-    rails use
-    ruby use
-    gem dev setup
+x readme
 x license file
 x rename away from trademark confusion
   set up on github
   set up on rubygems
-  domain name
+  domain name, twitter
   commercial license
   contributor license agreement
   demo video
 
+  write non-rails install instructions
+  can client js detect when no key is attached?
   enforce code style with rubocop
   reporting
   help page on website for creating localhost aliases

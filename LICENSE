@@ -1,6 +1,6 @@
-TwoFactorAuth is avilable under the Affero General Public License v3 or a
-commercial license for those who do not want the obligations of the AGPLv3
-(note that section 13 will apply to the codebase you use this gem in).
+TwoFactorAuth is available at no charge under the Affero General Public
+License v3 (note that section 13 will apply to the codebase you use this in),
+see below for details.
 
 https://www.twofactorauth.io/rails
 
@@ -9,6 +9,7 @@ commercial license that includes support and, if you want, installation.
 
 If you would like to have a licensing flamewar, please contact me on Slashdot
 in 1998, as that is the only time and place I have had the interest in one.
+Even RMS approves of selling exceptions to the GPL.
 
 
 

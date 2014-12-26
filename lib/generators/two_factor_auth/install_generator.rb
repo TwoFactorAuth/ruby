@@ -25,7 +25,7 @@ module TwoFactorAuth
       end
 
       def show_readme
-        readme "README.md" if behavior == :invoke
+        readme "README" if behavior == :invoke
       end
     end
   end
