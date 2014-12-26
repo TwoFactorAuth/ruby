@@ -27,9 +27,11 @@ x detailed errors only in dev/test mode
 x readme
 x license file
 x rename away from trademark confusion
-  set up on github
+x set up on github
   set up on rubygems
-  domain name, twitter
+x domain name
+  twofactorauth.io site
+  twofactorauth.io ssl
   commercial license
   contributor license agreement
   demo video
