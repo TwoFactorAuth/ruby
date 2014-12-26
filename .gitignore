@@ -1,5 +1,6 @@
 .bundle/
 Gemfile.lock
+two_factor_auth-*.gem
 log/*.log
 pkg/
 test/dummy/db/*.sqlite3
