@@ -1,5 +1,6 @@
 module TwoFactorAuth
   class AuthenticationsController < TwoFactorAuthController
+    skip_before_action :two_factor_auth_registration
     skip_before_action :two_factor_auth_authentication
 
     include TwoFactorAuth::AuthenticationsHelper

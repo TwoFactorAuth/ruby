@@ -71,13 +71,28 @@ write non-Rails instructions later.
     127.0.0.1 dev.myapp.com
     ```
 
-5.  If you roll your own Registrations/Authentications controller, remember to
+5.  When you want to require registration or authentication in your
+    controllers, call the filter:
+
+    ```
+    before_action :two_factor_auth_registration
+    before_action :two_factor_auth_authentication
+    ```
+
+    If you only want to require users authenticate if they've registered a key:
+
+    ```
+    before_action :two_factor_auth_authentication, if: :user_two-factor_auth_registered?
+    ```
+
+6.  TwoFactorAuth ships with a RegistrationsController and AuthenticationsController,
+    use `rake routes` to see how to link into them.
+
+7.  If you roll your own Registrations/Authentications controller, remember to
     **never ever show the error messages from the Verifiers in production**. The
     messages are useful for debugging TwoFactorAuth, your app, or your
     JavaScript, but they would also be very useful to an attacker trying to
     bypass or break your two-factor authentication.
-
-TODO: final steps hooking Devise/ApplicationController
 
 Is it any good?
 ---------------
