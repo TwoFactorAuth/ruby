@@ -20,8 +20,10 @@ called Universal Second Factor ("U2F").
  * Sites don't have to authenticate any external service
  * ...or pay a licensing fee to FIDO or a patent holder
 
-Because U2F is new it's only supported by Chrome, but other browers will be
-supported Real Soon Now.
+U2F is young and growing. Google Chrome supports it fully. Mozilla Firefox is
+developing support now. Microsoft has joined the Board of Directors for FIDO
+Alliance, so Internet Explorer should support it soon. (Safari support seems
+likely, but Apple is famouly hard to predict.)
 
 The TwoFactorAuth gem drops into your site to add support for U2F. You don't
 have to learn the crypto behind it, you just integrate it into your user
