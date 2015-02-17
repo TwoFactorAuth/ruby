@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Peter Harkins"]
   s.email       = ["ph@push.cx"]
   s.homepage    = "https://www.twofactorauth.io/rails"
-  s.summary     = "Support FIDO alliance universal two-factor authentication"
+  s.summary     = "Support FIDO Alliance universal two-factor authentication (U2F)"
   s.description = "TwoFactorAuth makes it easy to set up two-factor authentication for your users, whether through Devise or your custom Rails or Ruby authentication."
   s.licenses    = ["AGPL-3.0", "Commercial"]
 
