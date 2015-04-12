@@ -33,11 +33,13 @@ x domain name
 x twofactorauth.io site
 x twofactorauth.io ssl
 x commercial license
+x ability to run tests individually
   contributor license agreement
   demo video
   https://github.com/plataformatec/devise/wiki/How-To:-redirect-to-a-specific-page-on-successful-sign-in
 
   write non-rails install instructions
+  navigation integration test
   can client js detect when no key is attached?
   enforce code style with rubocop
   reporting
