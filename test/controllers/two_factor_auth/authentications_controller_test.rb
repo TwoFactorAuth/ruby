@@ -16,7 +16,7 @@ module TwoFactorAuth
     let(:signatureData) { "AQAAABAwRgIhAPueB6u8s63myrtQBT7KNOR3c4CVoNPVAiEkSOB8WGzqAiEA5zYbDQopgsVUl3d3pC947pKFSSIJs00ouC3xn3m7Pxo" }
 
     before do
-      TwoFactorAuth.trusted_facet_list_url = "http://local.fidologin.com:3000"
+      TwoFactorAuth.facet_domain = "http://local.fidologin.com:3000"
       register_as current_user, registration
     end
 
@@ -36,10 +36,11 @@ module TwoFactorAuth
 
     describe "#create" do
       it "clears the pending challenge" do
-        controller.stub(:user_session, { 'pending_authentication_request_challenge' => challenge }) do
-          post :create, keyHandle: TwoFactorAuth.websafe_base64_encode(registration.key_handle), clientData: clientData, signatureData: signatureData
-          controller.user_session.wont_include 'pending_authentication_request_challenge'
-        end
+        controller.send(:authentication_request)
+        pending_challenge = controller.user_session['pending_authentication_request_challenge']
+        post :create, keyHandle: TwoFactorAuth.websafe_base64_encode(registration.key_handle), clientData: clientData, signatureData: signatureData
+        new_pending_challenge = controller.user_session['pending_authentication_request_challenge']
+        new_pending_challenge.wont_equal pending_challenge
       end
 
       describe "success" do

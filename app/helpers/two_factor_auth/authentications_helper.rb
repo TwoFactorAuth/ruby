@@ -11,6 +11,7 @@ module TwoFactorAuth
     end
 
     def clear_pending_challenge
+      @authentication_request = nil
       user_session.delete 'pending_authentication_request_challenge'
     end
   end

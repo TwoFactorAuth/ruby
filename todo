@@ -38,6 +38,10 @@ x ability to run tests individually
   demo video
   https://github.com/plataformatec/devise/wiki/How-To:-redirect-to-a-specific-page-on-successful-sign-in
 
+  reorg all the facet domain/list url/list code into sum type value objects
+  better error for "device not found"; error code 1, device status code: -200
+  handle timeout error if user doesn't touch u2f
+  note https://www.yubico.com/faq/enable-u2f-linux/ in readme setup
   write non-rails install instructions
   navigation integration test
   can client js detect when no key is attached?

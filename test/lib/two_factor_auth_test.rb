@@ -3,6 +3,13 @@ require_relative '../test_helper'
 describe TwoFactorAuth do
   let(:pubkey) {  "\x049\xC6GC\xE6\xD3un;a\xD2\x04\e\x9B,vk\xEB\xDC\xB51\b\x14\x16\a\x92\x8D\xA1\xA92\xD7Z\x17\xB3D\xDF}P\xDA\x9Cg\xEB\xFD7h)N\xC4\xF2\xF1\x10\e\x8A\xC7\x88\x9AM\x17V\xEA\xBEX\x14\xAB" }
 
+  def teardown
+    # clear all the settings between runs
+    TwoFactorAuth.instance_variable_set(:@facet_domain, nil)
+    TwoFactorAuth.instance_variable_set(:@trusted_facet_list_url, nil)
+    TwoFactorAuth.instance_variable_set(:@facets, nil)
+  end
+
   describe "U2F_VERSION" do
     it "is the only version" do
       TwoFactorAuth::U2F_VERSION.must_equal 'U2F_V2'
@@ -25,18 +32,6 @@ describe TwoFactorAuth do
     it "doesn't let http domains end in a /" do
       TwoFactorAuth.facet_domain = "http://www.example.net/"
       TwoFactorAuth.facet_domain.must_equal "http://www.example.net"
-    end
-
-    it "raises if you try to use localhost" do
-      Proc.new {
-        TwoFactorAuth.facet_domain = "http://localhost:3000"
-      }.must_raise(TwoFactorAuth::InvalidFacetDomain)
-      Proc.new {
-        TwoFactorAuth.facet_domain = "http://localhost:3000/"
-      }.must_raise(TwoFactorAuth::InvalidFacetDomain)
-      Proc.new {
-        TwoFactorAuth.facet_domain = "http://localhost/"
-      }.must_raise(TwoFactorAuth::InvalidFacetDomain)
     end
 
     it "raises if you try to use something.dev" do
@@ -65,31 +60,57 @@ describe TwoFactorAuth do
     end
 
     it "is based on facet_domain otherwise" do
-      # this value is persisted across tests...
-      TwoFactorAuth.trusted_facet_list_url = nil
       TwoFactorAuth.facet_domain = "https://www.example.net"
-      TwoFactorAuth.trusted_facet_list_url.must_equal "https://www.example.net/two_factor_auth/trusted_facets"
+      TwoFactorAuth.trusted_facet_list_url.must_match /\Ahttps:\/\/www.example.net/
+    end
+
+    it "prohibits HTTP URLs" do
+      Proc.new {
+        TwoFactorAuth.trusted_facet_list_url = "http://www.example.net/list"
+      }.must_raise(TwoFactorAuth::InvalidTrustedFacetListUrl)
+    end
+  end
+
+  describe "#app_id_or_facet_list" do
+    it "is the domain if there are no facets" do
+      TwoFactorAuth.facet_domain = "https://www.example.net"
+      TwoFactorAuth.facets = []
+      TwoFactorAuth.app_id_or_facet_list.must_equal "https://www.example.net"
+    end
+
+    it "is the trusted facet list if there are facets" do
+      TwoFactorAuth.facet_domain = "https://www.example.net"
+      TwoFactorAuth.facets = ["https://www.example.com", "https://www.example.net"]
+      TwoFactorAuth.app_id_or_facet_list.must_equal "https://www.example.net/two_factor_auth/trusted_facets"
     end
   end
 
   describe "setting facets" do
     it "can be set explicitly" do
+      TwoFactorAuth.facet_domain = "https://www.example.net"
       TwoFactorAuth.facets = ["https://www.example.net", "https://staging.example.net"]
       TwoFactorAuth.facets.must_equal ["https://www.example.net", "https://staging.example.net"]
     end
 
-    it "is just the facet_domain by default" do
+    it "prohibits using a facet list with an http app id" do
+      TwoFactorAuth.facet_domain = "http://www.example.net/"
+      Proc.new {
+        TwoFactorAuth.facets = ["https://www.example.com"]
+      }.must_raise(TwoFactorAuth::InvalidFacetDomain)
+    end
+
+    it "prohibits setting an HTTP URL in the facet list" do
+      TwoFactorAuth.facet_domain = "https://www.example.net/"
+      Proc.new {
+        TwoFactorAuth.facets = ["http://www.example.net"]
+      }.must_raise(TwoFactorAuth::InvalidFacetListDomain)
+    end
+
+    it "is empty by default" do
       # this value is persisted across tests...
       TwoFactorAuth.facets = nil
       TwoFactorAuth.facet_domain = "https://www.example.net"
-      TwoFactorAuth.facets.must_equal ["https://www.example.net"]
-    end
-
-    it "is just the facet_domain if empty list" do
-      # this value is persisted across tests...
-      TwoFactorAuth.facets = []
-      TwoFactorAuth.facet_domain = "https://www.example.net"
-      TwoFactorAuth.facets.must_equal ["https://www.example.net"]
+      TwoFactorAuth.facets.must_equal []
     end
   end
 

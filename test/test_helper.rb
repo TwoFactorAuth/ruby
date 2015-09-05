@@ -26,6 +26,10 @@ class ActionController::TestCase
 
   def teardown
     Warden.test_reset!
+    # clear all the settings
+    TwoFactorAuth.instance_variable_set(:@facet_domain, nil)
+    TwoFactorAuth.instance_variable_set(:@trusted_facet_list_url, nil)
+    TwoFactorAuth.instance_variable_set(:@facets, nil)
   end
 
   def register_as user, registration

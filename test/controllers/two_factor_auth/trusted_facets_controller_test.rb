@@ -3,6 +3,7 @@ require_relative "../../test_helper"
 module TwoFactorAuth
   describe TrustedFacetsController do
     it "returns the list of facets as json" do
+      TwoFactorAuth.facet_domain = "https://www.example.net"
       TwoFactorAuth.facets = [ 'https://example.com', 'https://admin.example.com' ]
       get :index
       facets = JSON::parse(response.body)

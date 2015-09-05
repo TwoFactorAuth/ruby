@@ -10,7 +10,7 @@ elsif Rails.env.staging?
   TwoFactorAuth.facet_domain = "https://staging.example.com"
 else
   # The standard prohibits "localhost" or "local.dev", add an alias to /etc/hosts and use that
-  TwoFactorAuth.facet_domain = "http://local2fa.example.com:3000"
+  TwoFactorAuth.facet_domain = "http://localhost:3000"
 end
 
 # Optional: if you want your users to be able to authenticate against multiple

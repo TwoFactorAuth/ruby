@@ -13,12 +13,11 @@ module TwoFactorAuth
     class CantGenerateRandomNumbers < TwoFactorAuthError ; end
     class InvalidPublicKey < TwoFactorAuthError ; end
     class InvalidFacetDomain < TwoFactorAuthError ; end
+    class InvalidTrustedFacetListUrl < TwoFactorAuthError ; end
+    class InvalidFacetListDomain < TwoFactorAuthError ; end
 
 
   def self.facet_domain= facet_domain
-    if facet_domain =~ /localhost(:\d+)?\/?$/
-      raise InvalidFacetDomain, "Facet domain can't be localhost, edit /etc/hosts to make a custom hostname"
-    end
     if facet_domain =~ /\.dev(:\d+)?\/?$/
       raise InvalidFacetDomain, "Facet domain needs a real TLD, not .dev. Edit /etc/hosts to make a custom hostname"
     end
@@ -34,23 +33,39 @@ module TwoFactorAuth
   end
 
   def self.trusted_facet_list_url= url
+    if url !~ /\Ahttps:/
+      raise InvalidTrustedFacetListUrl, "U2F requires HTTPS for facet urls"
+    end
     @trusted_facet_list_url = url
   end
 
   def self.trusted_facet_list_url
-    @trusted_facet_list_url or "#{facet_domain}/two_factor_auth/trusted_facets"
+    @trusted_facet_list_url or app_id_or_facet_list
+  end
+
+  # We send clients the facet domain (web origin) if there are no facets,
+  # (typical for local dev), otherwise the full facet list (prohibits http)
+  def self.app_id_or_facet_list
+    if facets.empty?
+      facet_domain
+    else
+      "#{facet_domain}/two_factor_auth/trusted_facets"
+    end
   end
 
   def self.facets= facets
+    facets ||= []
+    if !facets.empty? and facet_domain !~ /\Ahttps:/
+      raise InvalidFacetDomain, "U2F requires HTTPS to use facet lists"
+    end
+    if facets.any? { |f| f !~ /\Ahttps:/ }
+      raise InvalidFacetListDomain, "URLs in the facet list must all be HTTPS"
+    end
     @facets = facets
   end
 
   def self.facets
-    if @facets.nil? or @facets.empty?
-      [facet_domain]
-    else
-      @facets
-    end
+    @facets ||= []
   end
 
   def self.websafe_base64_encode str

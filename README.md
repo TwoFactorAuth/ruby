@@ -73,7 +73,12 @@ write non-Rails instructions later.
     127.0.0.1 dev.myapp.com
     ```
 
-5.  When you want to require registration or authentication in your
+5.  Test starting your server with `bundle exec rails server`. TwoFactorAuth
+    has a lot of assertions for subtle U2F requirements around domains names,
+    so it may stop the Rails server from starting and tell you to make a URL
+    HTTPS, etc.
+
+6.  When you want to require registration or authentication in your
     controllers, call the filter:
 
     ```
@@ -87,10 +92,10 @@ write non-Rails instructions later.
     before_action :two_factor_auth_authentication, if: :user_two-factor_auth_registered?
     ```
 
-6.  TwoFactorAuth ships with a RegistrationsController and AuthenticationsController,
+7.  TwoFactorAuth ships with a RegistrationsController and AuthenticationsController,
     use `rake routes` to see how to link into them.
 
-7.  If you roll your own Registrations/Authentications controller, remember to
+8.  If you roll your own Registrations/Authentications controller, remember to
     **never ever show the error messages from the Verifiers in production**. The
     messages are useful for debugging TwoFactorAuth, your app, or your
     JavaScript, but they would also be very useful to an attacker trying to
