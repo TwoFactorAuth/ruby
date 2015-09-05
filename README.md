@@ -65,9 +65,9 @@ write non-Rails instructions later.
     ```
 
     Edit `config/initializers/two_factor_auth.rb` to include your app's domain
-    name. For security reasons, U2F won't authenticate against "localhost" or
-    fake top-level domains like ".dev", so you may need to add an alias to
-    `/etc/hosts` and use that when developing locally:
+    name. For security reasons, U2F won't authenticate against fake top-level
+    domains like ".dev", so you may need to add an alias to `/etc/hosts` and
+    use that when developing locally:
 
     ```
     127.0.0.1 dev.myapp.com
