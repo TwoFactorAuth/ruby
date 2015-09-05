@@ -116,13 +116,22 @@ and use TwoFactorAuth.
 Contributing
 ------------
 
+The `test/dummy` directory has a Rails app, you can run it with:
+
+    $ bundle
+    $ bundle exec rake db:setup
+    $ bundle exec rails server
+
+Use `bundle exec rake` to run the library's test suite.
+
 See TODO for what's planned and might affect your code. I'd love to hear what
-you're thinking of writing by email (run `git log --format="format:%an <%ae>"`)
-or on IRC as `pushcx` on [Freenode](https://freenode.net).
+you're thinking of writing by email (run `git log --format="format:%an <%ae>"`),
+on IRC as `pushcx` on [Freenode](https://freenode.net), or on Twitter as
+[@pushcx](https://twitter.com/pushcx).
 
 Fork the repo, make your change in a branch, don't forget to run the tests, and
 send a pull request. Because of the dual-licensing (explained below), you'll
-need to sign a Contrubutor License Agreement. I'll post that soon.
+need to sign a Contrubutor License Agreement. I'll contact you with that.
 
 License
 -------
