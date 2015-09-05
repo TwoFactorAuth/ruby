@@ -16,6 +16,10 @@ module TwoFactorAuth
         Time.now.utc.strftime("%Y%m%d%H%M%S")
       end
 
+      def add_route
+        route "two_factor_auth_for :users"
+      end
+
       def copy_migration
         migration_template "migration.rb", "db/migrate/create_two_factor_auth_registrations.rb"
       end
