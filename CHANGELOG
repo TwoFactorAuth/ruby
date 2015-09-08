@@ -1,0 +1,11 @@
+CHANGELOG
+=========
+
+2015-09-08: v0.2.0
+------------------
+
+* First end-to-end "it works on my machine" release.
+* Fix inclusion of controller filters for reg/auth.
+* Permit 'localhost' for dev, as Chrome and spec now permit it.
+* Extend support up to Rails 4.2.4.
+* Complete install instructions.
