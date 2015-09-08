@@ -1,6 +1,5 @@
 module TwoFactorAuth
   class TwoFactorAuthController < ApplicationController
-    include TwoFactorAuth::ApplicationHelper
     include Devise::Controllers::Helpers
 
     protect_from_forgery with: :exception
@@ -8,7 +7,7 @@ module TwoFactorAuth
 
     private
 
-    def after_two_factor_auth_registrations_path_for(resource)
+    def after_two_factor_auth_registration_path_for(resource)
       signed_in_root_path(resource)
     end
 

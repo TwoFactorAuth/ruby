@@ -79,10 +79,11 @@ write non-Rails instructions later.
     HTTPS, etc.
 
 6.  When you want to require registration or authentication in your
-    controllers, call the filter:
+    controllers, call a filter:
 
     ```
     before_action :two_factor_auth_registration
+    # or:
     before_action :two_factor_auth_authentication
     ```
 
@@ -93,9 +94,14 @@ write non-Rails instructions later.
     ```
 
 7.  TwoFactorAuth ships with a RegistrationsController and AuthenticationsController,
-    use `rake routes` to see how to link into them.
+    use `rake routes` to see their routes.
 
-8.  If you roll your own Registrations/Authentications controller, remember to
+8.  Override `after_two_factor_auth_registration_path_for(resource)` and
+    `after_two_factor_auth_authentication_path_for(resource)` in your specific
+    controller or ApplicationController to specify where to send users after
+    the successfully register or authenticate.
+
+9.  If you roll your own Registrations/Authentications controller, remember to
     **never ever show the error messages from the Verifiers in production**. The
     messages are useful for debugging TwoFactorAuth, your app, or your
     JavaScript, but they would also be very useful to an attacker trying to

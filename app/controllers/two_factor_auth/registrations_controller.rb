@@ -15,11 +15,11 @@ module TwoFactorAuth
         client_data: ClientData.new(encoded: params[:clientData], correct_typ: 'navigator.id.finishEnrollment'),
         response: RegistrationResponse.new(encoded: params[:registrationData]),
       })
-      clear_pending_challenge
+      clear_pending_registration_challenge
 
       if verifier.save
         user_two_factor_auth_authenticated! 0 # don't need to auth again after registration
-        redirect_to after_two_factor_auth_registrations_path_for(current_user)
+        redirect_to after_two_factor_auth_registration_path_for(current_user)
       else
         flash[:alert] = "Unable to register"
         render :new, status: 406

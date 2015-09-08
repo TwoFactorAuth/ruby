@@ -19,7 +19,7 @@ module TwoFactorAuth
         client_data: ClientData.new(encoded: params[:clientData], correct_typ: 'navigator.id.getAssertion'),
         response: AuthenticationResponse.new(encoded: params[:signatureData]),
       })
-      clear_pending_challenge
+      clear_pending_authentication_challenge
 
       if verifier.valid?
         user_two_factor_auth_authenticated! verifier.counter
