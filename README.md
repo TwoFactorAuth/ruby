@@ -1,3 +1,17 @@
+*What's the status of this plugin?*
+
+I created this gem in December of 2015 when the U2F standard was first released, and it was just too early.
+Nobody understood what two-factor authentication was, why they needed it, or why they should use hardware instead of [horrifically](http://www.forbes.com/sites/laurashin/2016/12/20/hackers-have-stolen-millions-of-dollars-in-bitcoin-using-only-phone-numbers/#41356cd922db) [insecure](https://www.schneier.com/blog/archives/2016/08/nist_is_no_long.html) SMS.
+As a solo developer, I couldn't afford to do the market education to turn this into a viable project.
+
+Now, in spring of 2017, I've been seeing increasing interest in U2F and am considering updating this plugin for Rails 5.
+It would only take one or two sites willing to buy a year of support to make it worth my time.
+Please [email me](peter@twofactorauth.io) if you want to secure your users or would like to chat about anything related to the project.
+
+
+---
+
+
 TwoFactorAuth
 =============
 
