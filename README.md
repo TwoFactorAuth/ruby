@@ -46,7 +46,7 @@ interface. This should take an hour or two.
 Install
 -------
 
-The steps below assume you're using TwoFactoAuth with Ruby on Rails. I will
+The steps below assume you're using TwoFactorAuth with Ruby on Rails. I will
 write non-Rails instructions later.
 
 1.  Add it to your Gemfile and run `bundle install`:
