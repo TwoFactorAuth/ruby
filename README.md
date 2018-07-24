@@ -4,8 +4,8 @@ I created this gem in December of 2015 when the U2F standard was first released,
 Nobody understood what two-factor authentication was, why they needed it, or why they should use hardware instead of [horrifically](http://www.forbes.com/sites/laurashin/2016/12/20/hackers-have-stolen-millions-of-dollars-in-bitcoin-using-only-phone-numbers/#41356cd922db) [insecure](https://www.schneier.com/blog/archives/2016/08/nist_is_no_long.html) SMS.
 As a solo developer, I couldn't afford to do the market education to turn this into a viable project.
 
-Now, in spring of 2017, I've been seeing increasing interest in U2F and am considering updating this plugin for Rails 5.
-It would only take one or two sites willing to buy a year of support to make it worth my time.
+Now, in mid-2018, I've [seen increasing interest in U2F](https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing/) and am considering updating this plugin for Rails 5.
+It would only take two sites willing to buy an annual to make it worth my time.
 Please [email me](peter@twofactorauth.io) if you want to secure your users or would like to chat about anything related to the project.
 
 
@@ -34,10 +34,10 @@ called Universal Second Factor ("U2F").
  * Sites don't have to authenticate any external service
  * ...or pay a licensing fee to FIDO or a patent holder
 
-U2F is young and growing. Google Chrome supports it fully. Mozilla Firefox is
-developing support now. Microsoft has joined the Board of Directors for FIDO
-Alliance, so Internet Explorer should support it soon. (Safari support seems
-likely, but Apple is famouly hard to predict.)
+U2F is young and growing.
+Google Chrome and Mozilla Firefox support it fully out-of-the-box.
+Microsoft has joined the Board of Directors for FIDO Alliance, so perhaps Internet Explorer and Edge will support it soon.
+Safari supports it [via an extension](https://github.com/Safari-FIDO-U2F/Safari-FIDO-U2F) and it's impossible to predict if Apple will add official support.
 
 The TwoFactorAuth gem drops into your site to add support for U2F. You don't
 have to learn the crypto behind it, you just integrate it into your user
